@@ -11,14 +11,13 @@ def main():
         a = list(map(int, input().split()))
         A.append(a)
 
+    h = list(map(sum, A))
+    w = list(map(sum, zip(*A)))
+
     B = [[0] * W for i in range(H)]
     for i in range(H):
         for j in range(W):
-            for k in range(H):
-                B[i][j] += A[k][j]
-            for k in range(W):
-                B[i][j] += A[i][k]
-            B[i][j] -= A[i][j]
+            B[i][j] = h[i] + w[j] - A[i][j]
 
     for b in B:
         print(*b)
